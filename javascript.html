@@ -1,0 +1,26 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Verification</title>
+</head>
+<body>
+
+    <h1>Password Verification</h1>
+
+    <script>
+        let password1 = prompt("Enter your password:");
+        let password2 = prompt("Enter your password again:");
+
+        if (password1.length < 8 || password2.length < 8) {
+            alert("Password must be at least 8 characters long.");
+        } else if (password1 !== password2) {
+            alert("The passwords do not match.");
+        } else {
+            alert("The two passwords are matched.");
+        }
+    </script>
+
+</body>
+</html>
+```
