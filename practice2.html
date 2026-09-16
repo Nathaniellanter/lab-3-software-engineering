@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Font and Border Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f4f4;
+        }
+        .control-panel {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            max-width: 500px;
+        }
+        .control-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .text-container {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            max-width: 600px;
+            /* Initial Styles */
+            border: 5px solid rgb(0, 81, 186); 
+            color: rgb(232, 0, 13);
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>KU Text Customizer</h1>
+
+    <!-- Control Panel Section -->
+    <div class="control-panel">
+        <div class="control-group">
+            <label for="textColor">Text Color (RGB format):</label>
+            <input type="text" id="textColor" value="232, 0, 13" placeholder="e.g., 232, 0, 13">
+            <div class="note">Format: Red, Green, Blue (0-255)</div>
+        </div>
+
+        <div class="control-group">
+            <label for="borderColor">Border Color (RGB format):</label>
+            <input type="text" id="borderColor" value="0, 81, 186" placeholder="e.g., 0, 81, 186">
+            <div class="note">Format: Red, Green, Blue (0-255)</div>
+        </div>
+
+        <div class="control-group">
+            <label for="borderWidth">Border Width (pixels):</label>
+            <input type="number" id="borderWidth" value="5" min="0" max="50">
+        </div>
+    </div>
+
+    <!-- Target Paragraph Section -->
+    <div id="kuParagraph" class="text-container">
+        Rock Chalk, Jayhawk! The University of Kansas is a premier institution located in Lawrence, Kansas. Founded in 1865, KU has grown into a world-class research university. Students proudly wear the Crimson and Blue while cheering for the Jayhawks at Allen Fieldhouse and David Booth Kansas Memorial Stadium. From the historic buildings on Mount Oread to its top-tier academic programs, KU fosters a tradition of excellence, community, and discovery that impacts the world.
+    </div>
+
+    <!-- JavaScript to handle real-time updates -->
+    <script>
+        // Get elements from the DOM
+        const textColorInput = document.getElementById('textColor');
+        const borderColorInput = document.getElementById('borderColor');
+        const borderWidthInput = document.getElementById('borderWidth');
+        const kuParagraph = document.getElementById('kuParagraph');
+
+        // Function to update styles
+        function updateStyles() {
+            // Get values from inputs
+            const textColorValue = textColorInput.value.trim();
+            const borderColorValue = borderColorInput.value.trim();
+            const borderWidthValue = borderWidthInput.value;
+
+            // Apply text color
+            kuParagraph.style.color = `rgb(${textColorValue})`;
+
+            // Apply border styling
+            kuParagraph.style.borderWidth = `${borderWidthValue}px`;
+            kuParagraph.style.borderColor = `rgb(${borderColorValue})`;
+        }
+
+        // Add event listeners to detect typing or clicking
+        textColorInput.addEventListener('input', updateStyles);
+        borderColorInput.addEventListener('input', updateStyles);
+        borderWidthInput.addEventListener('input', updateStyles);
+    </script>
+
+</body>
+</html>
